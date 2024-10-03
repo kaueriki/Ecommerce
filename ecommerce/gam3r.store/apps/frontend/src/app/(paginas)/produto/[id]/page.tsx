@@ -1,10 +1,12 @@
+import AvaliacaoEspecializada from '@/components/produto/AvaliacaoEspecializada'
+import AvaliacoesUsuarios from '@/components/produto/AvaliacoesUsuarios'
 import BannerCompra from '@/components/produto/BannerCompra'
 import InformacoesProduto from '@/components/produto/InformacoesProduto'
+import MedidorDePreco from '@/components/produto/MedidorDePreço'
 import ProdutoNaoEncontrado from '@/components/produto/ProdutoNaoEncontrado'
 import TituloProduto from '@/components/produto/TituloProduto'
-import { produtos, Produto } from '@gstore/core' // Assuming `Produto` is exported from @gstore/core
+import { produtos, Produto } from '@gstore/core' 
 
-// Define a type for the props, including params with the id
 interface PaginaProdutoProps {
     params: {
         id: string;
@@ -12,10 +14,8 @@ interface PaginaProdutoProps {
 }
 
 export default function PaginaProduto({ params }: PaginaProdutoProps) {
-    // Convert params.id to a number
     const id = +params.id;
 
-    // Find the product by id
     const produto: Produto | undefined = produtos.find((produto) => produto.id === id);
 
     return produto ? (
@@ -24,7 +24,10 @@ export default function PaginaProduto({ params }: PaginaProdutoProps) {
                 <TituloProduto produto={produto} />
                 <InformacoesProduto produto={produto} />
                 <BannerCompra produto={produto} />
+                <MedidorDePreco produto={produto} />
             </div>
+            <AvaliacoesUsuarios produto={produto} />
+            <AvaliacaoEspecializada produto={produto} />
         </div>
     ) : (
         <ProdutoNaoEncontrado />

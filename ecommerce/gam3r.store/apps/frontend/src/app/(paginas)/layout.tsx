@@ -1,10 +1,17 @@
 import Pagina from '@/components/template/Pagina'
-import { ReactNode } from 'react'
+import { ProvedorCarrinho } from '@/data/contexts/ContextoCarrinho'
+import { ProvedorPagamento } from '@/data/contexts/ContextoPagamento'
+import { ProvedorProdutos } from '@/data/contexts/ContextoProdutos'
 
-interface LayoutProps {
-    children: ReactNode;
-}
 
-export default function Layout({ children }: LayoutProps) {
-    return <Pagina>{children}</Pagina>
+export default function Layout(props: any) {
+    return (
+        <ProvedorProdutos>
+            <ProvedorCarrinho>
+                <ProvedorPagamento>
+                    <Pagina>{props.children}</Pagina>
+                </ProvedorPagamento>
+            </ProvedorCarrinho>
+        </ProvedorProdutos>
+    )
 }

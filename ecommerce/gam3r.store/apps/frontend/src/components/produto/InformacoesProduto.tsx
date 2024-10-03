@@ -9,7 +9,7 @@ export interface InformacoesProdutoProps {
 export default function InformacoesProduto(props: InformacoesProdutoProps) {
     const { produto } = props
     return produto ? (
-        <div className="flex items-center bg-violet-dark rounded-xl p-5">
+        <div className="flex items-center bg-violet-dark rounded-xl p-5 text-zinc-300">
             <div className="flex-1 relative flex justify-center h-96">
                 <Image
                     src={produto.imagem!}
